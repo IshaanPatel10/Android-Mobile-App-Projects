@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">MulchAndroidApp</string>
+    <string name="RadioButton">Premium Bark Mulch: 56$ /Cubic Yard</string>
+    <string name="RadioButton2">Special Blend: 35$/ Cubic Yard </string>
+    <string name="RadioButton3">Triple Ground: $40 / Cubic Yard</string>
+    <string name="RadioButton4">Chocolate Dyed: $38 Cubic Yard</string>
+    <string name="RadioButton5">Red Dyed: $38 Cubic Yard</string>
+    <string name="RadioButton6">Blacked Dyed: $38 Cubic Yard</string>
+    <string name="RadioButton7">Play Mat: $38 Cubic Yard</string>
+    <string name="RadioButton8">Cedar: $38 Cubic Yard </string>
+    <string name="TopText">Select Mulch Type: </string>
+    <string name="Next_Button">Next</string>
+    <string name="Amount">Enter Number of Cubic Yards</string>
+    <string name="zero">0 </string>
+    <string name="Address_Input">Enter Address: </string>
+    <string name="Street">Street </string>
+    <string name="City">City </string>
+    <string name="State">State </string>
+    <string name="ZipCode">Zip Code </string>
+    <string name="Email">Email </string>
+    <string name="Phone">Phone </string>
+    <string name="Choco">Chocolate Dyed </string>
+    <string name="Money">$38 per cubic yard </string>
+    <string name="dyed">$Choco Dyed - 5 Cubic Yards</string>
+    <string name="summary">Order Summary: </string>
+    <string name="deliver">Delivering 5 cubic yards of Chocolate Dyed to: </string>
+    <string name="place">Place Order </string>
+    <string name="cost">Mulch Cost: $190 </string>
+    <string name="tax">Tax: 10$ </string>
+    <string name="del_cost">Deliver Cost: $25 </string>
+    <string name="total">Total: $225 </string>
+
+
+
+
 </resources>
