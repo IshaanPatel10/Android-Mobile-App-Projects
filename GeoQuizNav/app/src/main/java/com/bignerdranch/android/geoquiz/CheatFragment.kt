@@ -7,13 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.geoquiz.R
 import com.bignerdranch.android.geoquiz.databinding.ActivityMainBinding
 import com.bignerdranch.android.geoquiz.databinding.FragmentCheatBinding
 
 class CheatFragment : Fragment() {
+
+    companion object{
+        val CHEAT_RESULT_KEY = "cheatResultKey"
+        val IS_CHEATER = "isCheater"
+    }
+
     private var _binding: FragmentCheatBinding? = null
 
     private lateinit var recyclerView: RecyclerView
@@ -40,6 +48,12 @@ class CheatFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    binding.showAnserButton.setOnClickListerner{
+        val textVal = when {
+            correctAnswer -> R.string.false_button
+        }
+        setFragmentResult(CHEAT_RESULT_KEY, bundleOf(IS_CHEATER to true))
     }
 
 

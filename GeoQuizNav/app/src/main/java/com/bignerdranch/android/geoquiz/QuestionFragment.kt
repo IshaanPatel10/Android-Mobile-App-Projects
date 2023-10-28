@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.geoquiz.Question
@@ -54,10 +55,13 @@ class QuestionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setFragmentResult(CheatFragment.CHEAT_RESULT_KEY) {_, bundle ->
 
-        val binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+            isCheater = bundle.getBoolean(CheatFragment.IS_CHEATER)
+        }
     }
+
+
 
 }
 
