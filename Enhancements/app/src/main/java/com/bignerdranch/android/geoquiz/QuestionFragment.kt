@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -21,6 +23,7 @@ class QuestionFragment : Fragment() {
     // TODO Use view binding in fragments:
     //  https://developer.android.com/topic/libraries/view-binding#fragments
     private var _binding: FragmentQuestionBinding? = null
+    private var isQuestionAnswered = false
 
     // TODO This property is only valid between onCreateView and
     //  onDestroyView.
@@ -33,8 +36,21 @@ class QuestionFragment : Fragment() {
         Question(R.string.question_africa, false),
         Question(R.string.question_americas, true),
         Question(R.string.question_asia, true),
+        Question(R.string.question_amazon, true),
+        Question(R.string.question_greatWall, false),
+        Question(R.string.question_antartica, true),
+        Question(R.string.question_sahara, true),
+        Question(R.string.question_everest, true),
+        Question(R.string.question_equator, true),
+        Question(R.string.question_russia, true),
+        Question(R.string.question_us, true),
+        Question(R.string.question_pacific, true),
+        Question(R.string.question_deadSea, true),
+        Question(R.string.question_nile, true),
+        Question(R.string.question_australia2, true),
     )
     private var currentIndex = 0
+    private var correct = 0
     private var isCheater = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,14 +92,37 @@ class QuestionFragment : Fragment() {
         binding.nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
             binding.questionText.setText(questionBank[currentIndex].testResId)
+            binding.trueButton.isEnabled = true;
+            binding.falseButton.isEnabled = true;
+
+
+        }
+        binding.previousButton.setOnClickListener {
+            currentIndex = (currentIndex - 1) % questionBank.size
+            binding.questionText.setText(questionBank[currentIndex].testResId)
+            binding.trueButton.isEnabled = false;
+            binding.falseButton.isEnabled = false;
+
+        }
+
+        binding.questionText.setOnClickListener {
+            currentIndex = (currentIndex + 1) % questionBank.size
+            binding.questionText.setText(questionBank[currentIndex].testResId)
+
         }
 
         binding.trueButton.setOnClickListener {
             checkAnswer(true)
+            binding.trueButton.isEnabled = false;
+            binding.falseButton.isEnabled = false;
+            binding.correct.text = "Correct: " + correct + "/22";
         }
 
         binding.falseButton.setOnClickListener {
             checkAnswer(false)
+            binding.falseButton.isEnabled = false;
+            binding.trueButton.isEnabled = false;
+            binding.correct.text = "Correct: " + correct + "/22";
         }
 
         binding.cheatButton.setOnClickListener {
@@ -119,6 +158,10 @@ class QuestionFragment : Fragment() {
             else -> R.string.incorrect_toast
         }
         isCheater = false
+        if(userAnswer == correctAnswer){
+            correct++;
+
+        }
 
         Toast.makeText(this.context, resId, Toast.LENGTH_SHORT).show()
     }
